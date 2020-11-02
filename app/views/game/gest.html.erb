@@ -1,0 +1,87 @@
+<body>
+    <div class="main">
+      <div class="play">
+        <div class = "post1">
+            <p class="card" id="ecard1"></p>
+            <p class="card" id="ecard2"></p>
+            <p class="card" id="ecard3"></p>
+            <p class="card" id="ecard4"></p>
+            <p class="card" id="ecard5"></p>
+            <p class="card" id="ecard6"></p>
+            <p class="card" id="ecard7"></p>
+            <p class="card" id="ecard8"></p>
+        </div>
+        <div class = "judge">
+          <div class="judgegroup1">
+            <p class="judge1">ディーラー</p>
+            <p class="judge2">:</p>
+            <p class="judge3" id="judgedis1"></p>
+          </div>
+          <div class="judgegroup2">
+            <p class="judge4">ゲスト</p>
+            <p class="judge5">:</p>
+            <p class="judge6" id="judgedis2"></p>
+          </div>
+        </div>
+        <div class = "post2">
+            <p class="card" id="card1"></p>
+            <p class="card" id="card2"></p>
+            <p class="card" id="card3"></p>
+            <p class="card" id="card4"></p>
+            <p class="card" id="card5"></p>
+            <p class="card" id="card6"></p>
+            <p class="card" id="card7"></p>
+            <p class="card" id="card8"></p>
+        </div>
+      </div>
+      <div class="console">
+        <p id="again"></p>
+      </div>
+          <div class="controller">
+            <div class="moneyContainer">
+              <div class="bm">
+                <div class="money1">掛け金</div>
+                <div class="money2">:</div>
+                <div class="money3" id="bet"></div>
+              </div>
+              <div class="bm">
+                <div class="money1">おこづかい</div>
+                <div class="money2">:</div>
+                <div class="money3" id="money"></div>
+              </div>
+              <div class="container">
+                <div id="mm"class="item">-max</div>
+                <div id="mt"class="item">-1000</div>
+                <div id="mh"class="item">-100</div>
+                <div id="mten"class="item">-10</div>
+                <div id="pten"class="item">+10</div>
+                <div id="ph"class="item">+100</div>
+                <div id="pt"class="item">+1000</div>
+                <div id="pm"class="item">+max</div>
+              </div>   
+            </div>
+            <div class = "buttons">
+              <p class = "button1" id = "buttonact1">カードを引く</p>
+              <p class = "button2" id = "buttonact2">勝負！</p>
+            </div>
+          </div>  
+    </div>
+    <footer>
+      <div class="footerTop">
+        <p>●ブラックジャックのルール</p>
+      </div>
+      <div class="rule">
+        <ul>
+            <li>合計点数を21点にする、もしくは21点により近づけた者が勝ち。</li>
+            <li>22点以上はバーストとなり、その時点でディーラーの勝利。</li>
+            <li>J(ジャック)Q(クイーン)K(キング)はすべて10点。</li>
+            <li>A(エース)は1点又は11点、21点を超えないよう自動的に選択されます。</li>
+            <li>勝った場合、掛け金分の金額を得ます。負けた場合は掛け金が無くなります。</li>
+            <li>最初の2枚で21点だった場合、「ブラックジャック」となりあなたの勝利です。1.5倍の金額を得ます。</li>
+            <li>ディーラーは17点以上になるまで引き続けます。</li>
+        </ul>
+      </div>  
+    </footer>
+
+<%= javascript_pack_tag 'home/index' %>
+</body>

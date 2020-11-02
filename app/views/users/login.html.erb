@@ -1,0 +1,31 @@
+<body>
+    <div class="main">
+      <h2>ログイン</h2>
+        <div class="form users-form">
+            <%= form_tag("/login") do %>
+              <% if @user.errors.present? %>
+                <div id="errors">
+                  <h3><span>エラーがあります</span></h3>
+                  <ul>
+                    <% @user.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                    <% end%>
+                  </ul>
+                </div>
+              <% end%>
+
+              <div class="form-body">
+                <p>Name</p>
+                <input name="name">
+                <p>Password</p>
+                <input name="password">
+                <p><input type="submit" value="ログイン"></p>
+              </div>
+            <% end %>
+        </div>
+        <div class="bottomButtons">
+          <%= link_to("トップへ戻る","/",{class:"bottomButton"})%>
+        </div>
+      </div>
+    </div>
+</body>
