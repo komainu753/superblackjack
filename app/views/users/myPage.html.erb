@@ -1,0 +1,31 @@
+<body>
+  <p class="log"><%= flash[:notice]%></p>
+  <div class="main">
+    <div class="form">
+      <h2>マイページ</h2>
+      <div class="form users-form">
+        <div class="window">
+          <p>ユーザー:</p>
+          <p><%= @current_user.name %></p>
+        </div>
+        <div class="window">
+          <p>おこづかい記録:</p>
+          <p><%= @current_user.money %></p>
+        </div>
+        <div class="window">
+          <p>星座:</p>
+          <p><%= @current_user.star %></p>
+        </div>
+      </div>
+    </div>
+    <div class="homeButton">
+      <div class="topButtons">
+        <%= link_to("編集する","#{@current_user.id}/edit",{class:"bottomButton"})%>
+        <%= link_to("ユーザー削除","#{@current_user.id}/ready",{class:"bottomButton"})%>
+      </div>
+      <div class="bottomButtons">
+        <%= link_to("トップ","/",{class:"bottomButton"})%>
+      </div>
+    </div>
+  </div>
+</body>

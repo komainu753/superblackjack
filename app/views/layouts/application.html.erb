@@ -12,12 +12,22 @@
     <div class="header-logo">
       <%= link_to("♠ブラックジャック♥","/")%>
     </div>
-    <ul class="loginUser"> 
-      <li>ユーザー：<%= session[:user_name]%></li>
-      <li>おこづかい：<%= session[:user_money]%></li>
-    </ul>
-    <div class="logOut">ログアウト</div>
-</header>
+    <nav class="header-right">
+      <% if @current_user %>
+        <ul class="loginUser"> 
+          <li>ユーザー：<%= @current_user.name %></li>
+          <li>おこづかい記録：<%= @current_user.money %></li>
+        </ul>
+        <ul class="logbutton">
+          <li><%= link_to("ログアウト","/logout",{method: :post}) %></li>
+        </ul>
+      <%else%>
+        <ul class="logbutton">
+          <li><%= link_to("ログイン","/login") %></li>
+        </ul>
+      <%end%>
+    </nav>
+  </header>
 
   <body>
     <%= yield %>

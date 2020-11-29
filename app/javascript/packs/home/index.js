@@ -12,18 +12,21 @@ let point = 0;
 let bet = 0;
 let money = 500;
 //fetch API-----------------------------------------------------------------------
-
 function moneyPost(){
     fetch("money",{
         method: "POST",
         headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({money:money,authenticity_token:document.getElementsByName("csrf-token")[0].getAttribute("content")})
+        body: JSON.stringify({
+            id:window.location.pathname.split('/').pop(),
+            money:money + bet,
+            authenticity_token:document.getElementsByName("csrf-token")[0].getAttribute("content")
+        })
     })
     .then(function(res){
         console.log(res);
+        location.href="/rank/top"
     })
 }
-
 //ベット機能------------------------------------------------------------------------
 const moneyBet = ()=>{
     document.getElementById("mm").onclick = ()=> {
@@ -106,23 +109,60 @@ const moneyBet = ()=>{
         document.getElementById("bet").innerHTML =bet;
         document.getElementById("money").innerHTML =money;
     }
+}
 
+//ベット-------------------------------------
+const betTime = ()=>{
+    document.getElementById("judgedis1").innerHTML ="  ";
+    document.getElementById("judgedis2").innerHTML ="  ";
+
+    //トランプ表示ユーザー
+    for(let u=1;u<=8;u++){
+        document.getElementById("card"+u).innerHTML = "  ";
+        document.getElementById("card"+u).style.backgroundColor = "#92cb97";
+    }
+    //トランプ表示ディーラー
+    for(let u=1;u<=8;u++){
+        document.getElementById("ecard"+u).innerHTML = "  ";
+        document.getElementById("ecard"+u).style.backgroundColor = "#92cb97";
+    }
+    // 標準表示
+    document.getElementById("again").innerHTML = "お金を掛けてください";
+    document.getElementById("bet").innerHTML =bet;
+    document.getElementById("money").innerHTML =money;
+    document.getElementById("buttonact1").innerHTML = "スタート";
+    document.getElementById("buttonact1").onclick = ()=> {
+        gameStart();
+    }
+    document.getElementById("buttonact2").innerHTML = "記録して退室";
+    document.getElementById("buttonact2").onclick = ()=>{
+        moneyPost();
+    }
+    document.getElementById("buttonact3").innerHTML = "退室";
+    document.getElementById("buttonact3").onclick = ()=>{
+        location.href = '/';
+    }
+    moneyBet();
+    if(money==0&&bet==0){
+        document.getElementById("again").innerHTML = "お金がありません";
+        document.getElementById("buttonact1").innerHTML = "サラ金に行く";
+        document.getElementById("buttonact1").style.backgroundColor = " #00aaff";
+        document.getElementById("buttonact1").onclick = ()=> {
+            location.reload();
+        }
+    }
 }
 //ゲームの作成-----------------------------------
 const gameStart = ()=>{
     //初期化-------------------------------------------------------
-    document.getElementById("mt").onclick = ()=> {
-    }
-    document.getElementById("mh").onclick = ()=> {
-    }
-    document.getElementById("mten").onclick = ()=> {
-    }
-    document.getElementById("pten").onclick = ()=> {
-    }
-    document.getElementById("ph").onclick = ()=> {
-    }
-    document.getElementById("pt").onclick = ()=> {
-    }
+    document.getElementById("mm").onclick = ()=> {}
+    document.getElementById("mt").onclick = ()=> {}
+    document.getElementById("mh").onclick = ()=> {}
+    document.getElementById("mten").onclick = ()=> {}
+    document.getElementById("pten").onclick = ()=> {}
+    document.getElementById("ph").onclick = ()=> {}
+    document.getElementById("pt").onclick = ()=> {}
+    document.getElementById("pm").onclick = ()=> {}
 
     document.getElementById("buttonact1").innerHTML = "カードを引く";
     document.getElementById("buttonact2").innerHTML = "勝負！";
@@ -194,8 +234,7 @@ const gameStart = ()=>{
             point = none.indexOf(11)
             none.splice(point,1)
         }    
-    };
-
+    }
     //ゲーム開始-------------------------------------------------
     myTurn();
     enemyTurn();
@@ -217,9 +256,9 @@ const gameStart = ()=>{
         document.getElementById("buttonact2").onclick = ()=> {
             moneyPost();
         }
-
     }else{
-            //動作選択--------------------------------------------------
+    //動作選択--------------------------------------------------
+        //カード引く
         document.getElementById("buttonact1").onclick = ()=> {
             myTurn();
             aOrEleven();
@@ -239,8 +278,8 @@ const gameStart = ()=>{
                 }
             }        
         };
-    }
-    document.getElementById("buttonact2").onclick = ()=> {
+        //勝負
+        document.getElementById("buttonact2").onclick = ()=> {
             while(enemyTotal < 17){
                 enemyTurn();
                 if(enemyTotal >= 22 && true == enone.includes(11)){
@@ -248,8 +287,8 @@ const gameStart = ()=>{
                     point = enone.indexOf(11)
                     enone.splice(point,1)
                 }
-            }
-    // 勝敗-----------------------------------------------------------------------
+            }      
+        // 勝敗-----------------------------------------------------------------------
             document.getElementById("judgedis1").innerHTML = enemyTotal+"点";
             document.getElementById("judgedis2").innerHTML =total+"点";
 
@@ -262,16 +301,16 @@ const gameStart = ()=>{
             if(22 > total && total > enemyTotal ){
                 document.getElementById("again").innerHTML = "ＷＩＮ！！";
                 document.getElementById("money").innerHTML =money+"　+"+bet;
+                money = money+bet;
                 document.getElementById("buttonact1").onclick = ()=> {
-                    money = money+bet;
                     betTime();
                 }
             }else if(22 > total && enemyTotal > 21){
                 document.getElementById("judgedis1").innerHTML = enemyTotal+"点でバーストしました";
                 document.getElementById("again").innerHTML = "ＷＩＮ！！";
                 document.getElementById("money").innerHTML =money+"　+"+bet;
+                money = money+bet;
                 document.getElementById("buttonact1").onclick = ()=> {
-                    money = money+bet;
                     betTime();
                 }
             }else if(22 > enemyTotal && total < enemyTotal || total > 21 ){
@@ -294,43 +333,9 @@ const gameStart = ()=>{
                     betTime();
                 }   
             }
-    };
-}
-const betTime = ()=>{
-    document.getElementById("judgedis1").innerHTML ="  ";
-    document.getElementById("judgedis2").innerHTML ="  ";
-
-    //トランプ表示あなた
-    for(let u=1;u<=8;u++){
-        document.getElementById("card"+u).innerHTML = "  ";
-        document.getElementById("card"+u).style.backgroundColor = "#92cb97";
-    }
-    //トランプ表示ディーラー
-    for(let u=1;u<=8;u++){
-        document.getElementById("ecard"+u).innerHTML = "  ";
-        document.getElementById("ecard"+u).style.backgroundColor = "#92cb97";
-    }
-    document.getElementById("again").innerHTML = "お金を掛けてください";
-    document.getElementById("bet").innerHTML =bet;
-    document.getElementById("money").innerHTML =money;
-    document.getElementById("buttonact1").innerHTML = "スタート";
-    document.getElementById("buttonact1").onclick = ()=> {
-        gameStart();
-    }
-    document.getElementById("buttonact2").innerHTML = "記録して退室";
-    document.getElementById("buttonact2").onclick = ()=>{
-        moneyPost();
-    }
-    moneyBet();
-    if(money==0&&bet==0){
-        document.getElementById("again").innerHTML = "お金がありません";
-        document.getElementById("buttonact1").innerHTML = "サラ金に行く";
-        document.getElementById("buttonact1").style.backgroundColor = " #00aaff";
-        document.getElementById("buttonact1").onclick = ()=> {
-            location.reload();
         }
     }
-}
+};
 
 for(let s=0;s<=1;s++){
     betTime();

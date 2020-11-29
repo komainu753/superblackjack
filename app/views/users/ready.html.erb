@@ -1,0 +1,33 @@
+<body>
+  <div class="main">
+    <div class="form">
+      <h2>ユーザー削除</h2>
+      <div class="form users-form">
+        <%= form_tag("/users/destroy") do %>
+          <div class="window">
+            <p>ユーザー:</p>
+            <p><%= @current_user.name %></p>
+          </div>
+          <div class="window">
+            <p>おこづかい記録:</p>
+            <p><%= @current_user.money %></p>
+          </div>
+          <div class="window">
+            <p>星座:</p>
+            <p><%= @current_user.star %></p>
+          </div>
+          <% if flash.alert %>
+            <p class="alert"><span><%= flash.alert %></span></p>
+          <% end %>
+          <p>パスワードを入力してください</p>
+          <input type="password" name="password">
+          <p><input type="submit" value="削除"></p>
+        <% end%>
+      </div>
+    </div>
+    <div class="bottomButtons">
+      <%= link_to("マイページ","/myPage/#{@current_user.id}",{class:"bottomButton"})%>
+      <%= link_to("トップ","/",{class:"bottomButton"})%>
+    </div>
+  </div>
+</body>

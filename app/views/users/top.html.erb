@@ -16,11 +16,10 @@
                 </div>
               <% end%>
             <div class="form-body">
-              <p>・Name(8文字まで)<span>*必須</span></p>
-              <p>(ランキングに表示されます)</p>
-              <input name="name">
-              <p>・Password(15文字まで)<span>*必須</span></p>
-              <input name="password">
+              <p>・ユーザー名(8文字まで)<span>*必須</span>ランキングに表示されます</p>
+              <input type="text" name="name" maxlength="8">
+              <p>・パスワード(4文字以上)<span>*必須</span></p>
+              <input type="password" name="password" minlength="4">
               <p>・あなたの星座は？(グループに分かれて競い合おう！)</p>
               <select name="star" id="starList">
                 <option value=""></option>

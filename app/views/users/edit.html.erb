@@ -1,0 +1,46 @@
+<body>
+  <div class="main">
+    <div class="form">
+      <h2>編集</h2>
+        <div class="form users-form">
+          <%= form_tag("/users/update") do %>
+            <div class="window">
+              <p>ユーザー:</p>
+              <input type="text" name="name" maxlength="8" value="<%= @current_user.name %>">
+            </div>
+            <div class="window">
+              <p>星座:</p>
+                <select name="star" id="starList">
+                  <option value="<%= @current_user.star %>"><%= @current_user.star %></option>
+                  <option value="おひつじ座">おひつじ座</option>
+                  <option value="おうし座">おうし座</option>
+                  <option value="ふたご座">ふたご座</option>
+                  <option value="かに座">かに座</option>
+                  <option value="しし座">しし座</option>
+                  <option value="おとめ座">おとめ座</option>
+                  <option value="てんびん座">てんびん座</option>
+                  <option value="さそり座">さそり座</option>
+                  <option value="いて座">いて座</option>
+                  <option value="やぎ座">やぎ座</option>
+                  <option value="みずがめ座">みずがめ座</option>
+                  <option value="うお座">うお座</option>
+                </select>
+            </div>
+            <br>
+            <% if flash.alert %>
+              <p class="alert"><span><%= flash.alert %></span></p>
+            <% end %>
+            <p>パスワードを入力してください</p>
+            <input type="password" name="password">
+            <p><input type="submit" value="更新"></p>
+          <% end%>
+        </div>
+
+      </div>
+        <div class="bottomButtons">
+          <%= link_to("マイページ","/myPage/#{@current_user.id}",{class:"bottomButton"})%>
+          <%= link_to("トップ","/",{class:"bottomButton"})%>
+        </div>
+    </div>
+  </div>
+</body>

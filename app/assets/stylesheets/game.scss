@@ -4,32 +4,41 @@ body{
   clear:both;
 }
 header{
-  max-width:880px;
-  width:95%;
+  width:100%;
   margin:0 auto;
   display: flex;
+  background-color:#3b82c4;
+  color:#fff;
 }
 .header-logo {
   padding-left: 20px;
-  font-size: 30px;
-  line-height: 64px;
-}
-.loginUser {
-  float:right;
-}
+  font-size: 35px;
+  line-height: 82px;
+  color:#fff;
 
-.loginUser li {
-  line-height: 20px;
-  font-size: 13px;
-  padding-left: 250px;
 }
-.logOut{
+.header-right{
+  display:flex;
+  margin: 0 0 0 auto;
+}
+.log{
+  float:right;
+  padding-right:20px;
+}
+.loginUser li {
+  line-height: 25px;
+  font-size: 18px;
+}
+.logbutton{
   line-height: 50px;
-  padding:10px 10px 0px 10px;
+  width:100px;
+  padding:0px 10px 0px 10px;
   margin-left: 20px;
-  background-color:white;
+  margin-right:20px;
+  background-color:#fff;
   border-radius: 5px;
   text-align: center;
+  display: block;
 }
 
 ul,li{
@@ -40,10 +49,17 @@ span{
   color:rgb(223, 51, 51);
 }
 .main{
+  padding-top:30px;
   max-width:800px;
   width:95%;
   margin:0 auto;
-  height:900px;
+  height:800px;
+}
+.mainimg{
+  text-align:center;
+}
+.topimg{
+  width:60%;
 }
 
 .play{
@@ -68,37 +84,37 @@ span{
 }
 .judge{
   width:100%;
+  flex-direction: column;
 }
 .judgegroup1{
   display:flex;
   width:100%;
+  background-color: #00aaff;
+  border-radius: 5px;
+  height: 50px;
+  margin-bottom: 20px;
 }
 
 .judge1{
-  background-color: #00aaff;
   margin:5px 0px 20px 0px;
   padding-left:10px;
-  line-height: 46px;
+  line-height: 45px;
   width:15%;
-  border-radius: 5px 0px 0px 5px;
   text-align: center;
 
 }
 .judge2{
-  background-color: #00aaff;
   margin:5px 0px 20px 0px;
   padding-left:10px;
-  line-height: 46px;
+  line-height: 45px;
   width:5%;
 
 }
 .judge3{
-  background-color: #00aaff;
   margin:5px 0px 20px 0px;
   padding-left:10px;
-  line-height: 46px;
+  line-height: 45px;
   width:80%;
-  border-radius: 0px 5px 5px 0px;
 
 }
 
@@ -106,33 +122,30 @@ span{
 .judgegroup2{
   display:flex;
   width:100%;
+  background-color: #f67690;
+  border-radius: 5px;
+  height: 50px;
 }
 
 .judge4{
-  background-color:#f67690;
   margin:0px 0px 5px 0px;
   padding-left:10px;
-  line-height: 46px;
+  line-height: 50px;
   width:15%;
-  border-radius: 5px 0px 0px 5px;
   text-align: center;
 }
 .judge5{
-  background-color:#f67690;
   margin:0px 0px 5px 0px;
   padding-left:10px;
-  line-height: 46px;
+  line-height: 50px;
   width:5%;
 
 }
 .judge6{
-  background-color:#f67690;
   margin:0px 0px 5px 0px;
   padding-left:10px;
-  line-height: 46px;
+  line-height: 50px;
   width:80%;
-  border-radius: 0px 5px 5px 0px;
-
 }
 
 
@@ -152,83 +165,81 @@ span{
   height:200px;
 
 }
-.buttons{
-  width:20%;
-  user-select:none;
-  height:100%;
-  display:flex;
-  flex-direction:column;
-}
-
-.button1{
-  height:100%;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(245,165,0);
-  cursor: pointer;
-  border-radius: 10px;
-  margin-top:0px;
-  box-shadow:0px 5px rgb(58,56,56);
-
-}
-
-.button2{
-  height:100%;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(245,165,0);
-  cursor: pointer;
-  border-radius: 10px;
-  box-shadow:0px 5px rgb(58,56,56);
-}
-
-.button1:active{
-  box-shadow:none;
-  position:relative;
-  top:5px;
-}
-
-.button2:active{
-  box-shadow:none;
-  position:relative;
-  top:5px;
-}
 
 .moneyContainer{
   flex-direction: column;
   width:80%;
-  margin-right:10px;
   justify-content: space-between;
   display:flex;
   height:100%;
+  margin-right:10px;
 }
+
+.buttons{
+  flex-direction:column;
+  width:20%;
+  justify-content: space-between;
+  display:flex;
+  height:100%;
+  user-select:none;
+}
+
+.button1{
+  line-height: 60px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(245,165,0);
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top:0px;
+
+}
+
+.button2{
+  line-height: 60px;
+  margin-top:0px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(245,165,0);
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.button3{
+  line-height: 60px;
+  margin-top:0px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
 .bm{
   display:flex;
   width:100%;
+  background-color: white;
+  border-radius: 5px;
 
 }
 .money1{
-  background-color: white;
   margin-top:0px;
-  border-radius: 5px 0px 0px 5px;
   line-height: 60px;
   width:20%;
   text-align: center;
 }
 
 .money2{
-  background-color: white;
   margin-top:0px;
   line-height: 60px;
   width:5%;
 }
 
 .money3{
-  background-color: white;
   margin-top:0px;
-  border-radius: 0px 5px 5px 0px;
   line-height: 60px;
   width:75%;
 }
@@ -242,25 +253,19 @@ span{
   display:flex;
   justify-content: center;
   align-items: center;
-
   background-color: rgb(245,165,0);
   border-radius: 5px;
   text-align: center;
-  box-shadow:0px 3px rgb(58,56,56);
   cursor: pointer;
   user-select:none;
   width:12%;
 
 }
-.item:active{
-  box-shadow:none;
-  position:relative;
-  top:3px;
 
-}
 a{
   text-decoration: none;
   color:black;
+  display:block;
 }
 
 footer{
@@ -271,7 +276,7 @@ footer{
 }
 .homeButton{
   user-select:none;
-  margin-top:100px;
+  margin-top:60px;
   width:100%;
 }
 .topButtons{
@@ -289,11 +294,10 @@ footer{
   cursor: pointer;
   border-radius: 10px;
   margin-top:0px;
-  box-shadow:0px 5px rgb(58,56,56);
 
 }
 .bottomButtons{
-  margin-top:20px;
+  margin-top:40px;
   height:80px;
   justify-content: space-around;
   display:flex;
@@ -308,37 +312,41 @@ footer{
   background-color: rgb(255,255,255);
   cursor: pointer;
   border-radius: 10px;
-  box-shadow:0px 5px rgb(58,56,56);
 
 }
-
-.topButton:active{
-  box-shadow:none;
-  position:relative;
-  top:5px;
+.masterbox{
+  background-color: white;
+  border-radius: 10px;
+  border:2px solid;
 }
-
-.bottomButton:active{
-  box-shadow:none;
-  position:relative;
-  top:5px;
-}
-
-.box{
+.box1{
   display: flex;
-  background-color:white;
-  border:2px solid black;
+  border-bottom: 2px solid;
 }
+
+.box2{
+  display:flex;
+}
+
+.rank{
+  width:8%;
+}
+
 .name{
-  width:25%;
+  width:20%;
 }
 .money{
-  width:25%;
+  width:20%;
 }
 
 .star{
-  width:25%;
+  width:20%;
 }
 .updated_at{
-  width:25%;
+  width:20%;
+}
+
+.window{
+  background-color:#6d9770;
+  margin-bottom:20px;
 }

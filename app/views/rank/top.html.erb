@@ -1,27 +1,31 @@
 <body>
     <div class="main">
       <h2>ランキング</h2>
-        <div class="rank">
-            <h3>個人資産ランキング BEST10</h3>
-            <% @users.each do|user|%>
-                <div class="box">
-                    <p class="name"><%=user[:name] %></p>
-                    <p class="money"><%=user[:money] %></p>
-                    <p class="star"><%=user[:star] %></p>
-                    <p class="created_at"><%=user[:updated_at].strftime('%Y/%m/%d') %></p>
+        <div>
+            <h3>☆個人おこづかいランキング BEST10</h3>
+            <div class = masterbox>
+                <div class="box1">
+                    <p class="rank"></p>
+                    <p class="name">名前</p>
+                    <p class="money">おこづかい</p>
+                    <p class="star">星座</p>
+                    <p class="created_at">更新日時</p>
                 </div>
-            <%end%>
+                <% @topUsers.each.with_index(1) do|user,i|%>
+                    <div class="box2">
+                        <p class="rank"><%=i %>位</p>
+                        <p class="name"><%=user[:name] %></p>
+                        <p class="money"><%=user[:money] %></p>
+                        <p class="star"><%=user[:star] %></p>
+                        <p class="created_at"><%=user[:updated_at].strftime('%Y/%m/%d') %></p>
+                    </div>
+                <%end%>
+            </div>
         </div>
-        <div class="rank">
-            <h3>星座資産ランキング</h3>
-            <% @users.each do|user|%>
-                <div class="box">
-                    <p class="name"><%=user[:name] %></p>
-                    <p class="money"><%=user[:money] %></p>
-                    <p class="star"><%=user[:star] %></p>
-                    <p class="created_at"><%=user[:updated_at].strftime('%Y/%m/%d') %></p>
-                </div>
-            <%end%>
+        <div>
+        <br>
+            <h3>☆星座対抗おこづかいランキング</h3>
+            <p>※製作中</p>
         </div>
 
         <div class="bottomButtons">

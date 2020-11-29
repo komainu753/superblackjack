@@ -2,22 +2,15 @@
     <div class="main">
       <h2>ログイン</h2>
         <div class="form users-form">
+          <% if flash.alert %>
+            <p class="alert"><%= flash.alert %></p>
+          <% end %>
             <%= form_tag("/login") do %>
-              <% if @user.errors.present? %>
-                <div id="errors">
-                  <h3><span>エラーがあります</span></h3>
-                  <ul>
-                    <% @user.errors.full_messages.each do |msg| %>
-                      <li><%= msg %></li>
-                    <% end%>
-                  </ul>
-                </div>
-              <% end%>
 
               <div class="form-body">
-                <p>Name</p>
+                <p>ユーザー名</p>
                 <input name="name">
-                <p>Password</p>
+                <p>パスワード</p>
                 <input name="password">
                 <p><input type="submit" value="ログイン"></p>
               </div>

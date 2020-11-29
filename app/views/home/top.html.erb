@@ -1,14 +1,23 @@
 <body>
+    <p class="log"><%= flash[:notice]%></p>
     <div class="main">
+        <div class="mainimg">
+            <img class="topimg" src="/image1.png">
+        </div>
         <div class="homeButton">
             <div class="topButtons">
-                <%= link_to("ゲストで遊ぶ","game/gest",{class:"topButton"})%>
-                <%= link_to("新規ユーザー登録","/signup",{class:"topButton"})%>
-                <%= link_to("ログイン","/login",{class:"topButton"})%>
+                <% if @current_user %>
+                    <%= link_to("遊ぶ","game/#{@current_user.id}",{class:"topButton"})%>
+                <%else%>
+                    <%= link_to("ゲストで遊ぶ","game/gest",{class:"topButton"})%>
+                    <%= link_to("新規ユーザー登録","/signup",{class:"topButton"})%>
+                <%end%>
             </div>
             <div class="bottomButtons">
                 <%= link_to("ランキング","rank/top",{class:"bottomButton"})%>
-                <%= link_to("マイページ","/myPage",{class:"bottomButton"})%>
+                <% if @current_user %>
+                    <%= link_to("マイページ","/myPage/#{@current_user.id}",{class:"bottomButton"})%>
+                <% end %>
             </div>
         </div>
     </div>
