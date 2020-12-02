@@ -9,11 +9,22 @@
                     <p class="name">名前</p>
                     <p class="money">おこづかい</p>
                     <p class="star">星座</p>
-                    <p class="created_at">更新日時</p>
+                    <p class="created_at">更新日</p>
                 </div>
+                <%ranking = 0%>
+                <%lastMoney = 0%>
                 <% @topUsers.each.with_index(1) do|user,i|%>
+                    <%if i == 1%>
+                        <%ranking = 1%>
+                        <%lastMoney = user.money%>
+                    <%else%>
+                        <%if lastMoney != user.money%>
+                            <%ranking = ranking + 1%>
+                            <%lastMoney = user.money%>
+                        <%end%>
+                    <%end%>
                     <div class="box2">
-                        <p class="rank"><%=i %>位</p>
+                        <p class="rank"><%=ranking %>位</p>
                         <p class="name"><%=user[:name] %></p>
                         <p class="money"><%=user[:money] %></p>
                         <p class="star"><%=user[:star] %></p>
